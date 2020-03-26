@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:electron": "cross-env NODE_ENV=development yarn run nodemon --watch ./main.js --watch ./server.js --exec electron .",
+    "start:electron": "cross-env NODE_ENV=development concurrently 'yarn run start' 'wait-on http://localhost:3000 && yarn run nodemon --ignore src/ --exec electron .'",
     "build:electron": "cross-env NODE_ENV=production electron-builder"
   },
   "eslintConfig": {
@@ -43,10 +43,12 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "cross-env": "^7.0.2",
     "electron": "^8.2.0",
     "electron-builder": "^22.4.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "wait-on": "^4.0.1"
   },
   "build": {
     "electronDownload": {

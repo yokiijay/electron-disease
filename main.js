@@ -1,8 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const serverReady = require('./server')
 
-console.log( process.env.NODE_ENV )
-
 function createWindow(){
   let win = new BrowserWindow({
     width: 300,
@@ -15,7 +13,11 @@ function createWindow(){
     }
   })
 
-  win.loadURL('http://localhost:5000')
+  if(process.env.NODE_ENV==='development'){
+    win.loadURL('http://localhost:3000')
+  }else {
+    win.loadURL('http://localhost:5000')
+  }
 }
 
 serverReady(()=>{
