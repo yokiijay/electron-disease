@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { css } from '@emotion/core'
 
 export const center = css`
   display: grid;
