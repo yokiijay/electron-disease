@@ -1,11 +1,20 @@
 {
   "name": "electron-disease",
   "version": "0.1.0",
+  "main": "main.js",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "framer-motion": "^1.10.2",
+    "koa": "^2.11.0",
+    "koa-static": "^5.0.0",
+    "polished": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
@@ -14,7 +23,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:electron": "electron .",
+    "dev:electron": "yarn run nodemon --watch ./main.js --watch ./server.js --exec electron .",
+    "build:electron": "electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +42,37 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^8.2.0",
+    "electron-builder": "^22.4.1",
+    "nodemon": "^2.0.2"
+  },
+  "build": {
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
+    },
+    "productName": "疫情实况",
+    "appId": "com.yokiijay.disease",
+    "copyright": "Copyright @ 2020 Yokiijay",
+    "extends": null,
+    "directories": {
+      "buildResources": ".",
+      "output": "out"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "default",
+      "icon": "./public/icon.icns"
+    },
+    "win": {
+      "icon": "./public/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    }
   }
 }
