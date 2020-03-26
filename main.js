@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const serverReady = require('./server')
 
+console.log( process.env.NODE_ENV )
+
 function createWindow(){
   let win = new BrowserWindow({
     width: 300,

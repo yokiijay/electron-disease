@@ -24,9 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:electron": "electron .",
-    "dev:electron": "yarn run nodemon --watch ./main.js --watch ./server.js --exec electron .",
-    "build:electron": "electron-builder"
+    "start:electron": "cross-env NODE_ENV=development yarn run nodemon --watch ./main.js --watch ./server.js --exec electron .",
+    "build:electron": "cross-env NODE_ENV=production electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "electron": "^8.2.0",
     "electron-builder": "^22.4.1",
     "nodemon": "^2.0.2"
@@ -70,7 +70,9 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ]
     }
