@@ -13,6 +13,8 @@ function createWindow(){
     }
   })
 
+  win.setAlwaysOnTop(true)
+
   if(process.env.NODE_ENV==='development'){
     win.loadURL('http://localhost:3000')
   }else {
